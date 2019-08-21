@@ -36,3 +36,29 @@ class Solution(object):
     if not root.right:
       return root.val
     return self.find_largest(root.right)
+
+  ###Solution 2:Recursion
+  def secondLargest(self, root):
+    """
+    input: TreeNode root
+    return: int
+    """
+    # write your solution here
+    import sys
+    if not root:
+      return None
+    if not root.left and not root.right:
+      return -sys.maxint - 1
+    if root.left and not root.right:
+      return self.largest(root.left)
+    if not root.right.left and not root.right.right:
+      return root.val
+    return self.secondLargest(root.right)
+
+
+  def largest(self, root):
+    if not root:
+      return None
+    if not root.right:
+      return root.val
+    return self.largest(root.right)
