@@ -30,6 +30,10 @@ class Solution(object):
       return (False, None, None)
     # return(True, the minimum of the root, the maximum of the root)
     return (True, left_res[1] or root.val, right_res[2] or root.val)
+    ######## another way
+    lr, lmin, lmax = self.helper(root.left)
+    rr, rmin, rmax = self.helper(root.right)
+    return lr and rr and (not lmax or lmax < root.key) and (not rmin or rmin > root.key), lmin or root.key, rmax or root.key
   
   # Solution#2:
   Definition for a binary tree node.
